@@ -1,0 +1,16 @@
+.react-tagsinput {
+    background: transparent;
+    border-radius: 0.375rem;
+    border: 1px solid #424242;
+    padding: 0px;
+}
+
+.react-tagsinput-input {
+    margin-bottom: 0px;
+}
+
+.react-tagsinput-tag {
+    margin-bottom: 0px;
+    background: linear-gradient(133deg, #41d2ff 0%, #7e42ff 47.4%, #dd3fff 96.19%);
+    color: white;
+}

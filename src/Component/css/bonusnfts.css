@@ -1,0 +1,217 @@
+
+
+.t-price {
+    font-family: Oswald, sans-serif;
+    top: 10px;
+}
+.nfts img {
+    height: auto;
+    /* width: 100%; */
+}
+.cardDetail, .t-price {
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+}
+.cardDetail {
+    bottom: 0;
+    line-height: 1;
+}
+.cardInnerDetail {
+    margin-bottom: 0px;
+}
+.cardDetail small {
+    font-family: Oswald,sans-serif;
+    font-size: 10px !important;
+    opacity: .8;
+}
+.cardDetail h5 {
+font-family: Oswald, sans-serif;
+}
+.fltrnft {
+    display: flex;
+    justify-content: end;
+    position: relative;
+}
+.counter {
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+.counter button {
+    align-items: center;
+    background: #7d70ea66;
+    border: 2px solid #6e6e6e;
+    border-radius: 7px;
+    color: #fff;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+}
+.nft-search {
+    padding-left: 40px;
+    height: 36px;
+    background: #222630!important;
+    border: none;
+}
+.nfts .input-datepicker {
+    background-color: #222630 !important;
+    height: 36px;
+    padding: 12px;
+    width: 220px;
+}
+.theme-primary label{
+    font-family: Oswald, sans-serif;
+    color: #fff;
+}
+.theme-primary .select-nft{
+    background-color: #0bd1d91a;
+    border: 1px solid #444141;
+    border-radius: 12px;
+    color: #cacbce;
+    font-family: Oswald, sans-serif;
+    box-shadow: none;
+    height: 36px;
+}
+.theme-primary .select-nft option{
+    background-color: #000;
+    border: 1px solid #444141;
+    color: #fff;
+    border-radius: 12px;
+    height: 36px;
+}
+.icnsrch {
+    color: #fff;
+    font-size: 20px;
+    left: 5%;
+    position: absolute;
+    top: 1px;
+}
+.dark-skin .t_nftsHeader .nft-search {
+    background: #222630!important;
+    border: none!important;
+    color: #a5a5a5!important;
+    font-family: Montserrat,sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    outline: none!important;
+    padding: 4px 11px;
+}
+
+/* .dropdown-menu {
+    background: #121314!important;
+    border: 1px solid #686868!important;
+    padding: 5px 0px;
+    width: 250px;
+    height: 234px;
+    overflow: scroll;
+} */
+
+.nfts ul .btn_uni {
+    padding: 6px 16px;
+}
+.nfts .form-control:focus {
+    color: #fff;
+    background-color: #131720;
+    border-color: #131720;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem transparent;
+}
+.theme-primary .btn_uni {
+    background: linear-gradient(90deg,#1a2424,#2b1c2b) padding-box,linear-gradient(90deg,#05d6d9,#f907fc) border-box;
+    border: 1px solid #00000091!important;
+    border-radius: 8px;
+    color: #fff;
+    height: 36px;
+    font-family: Oswald,sans-serif!important;
+    font-size: 15px!important;
+    font-weight: 400!important;
+    padding: 4px 20px;
+    text-decoration: none!important;
+    text-transform: uppercase;
+    transition: all .9s ease-out;
+    transition: .9s;
+}
+.filterBtn .dropdown-toggle {
+    background: #0bd1d91a !important;
+    border: 1px solid #444141;
+    border-radius: 12px;
+    color: #0bd1d9;
+    box-shadow: none!important;
+    height: 36px;
+    font-family: Oswald, sans-serif;
+    font-weight: 300;
+    width: 100%;
+    font-family: Oswald, sans-serif;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ul.dropdown-menu.bg-dark.show {
+    background: #121314!important;
+    border: 1px solid #686868!important;
+    padding: 5px 20px;
+    width: 250px;
+}
+.filterBtn ul {
+    list-style: none;
+    padding-left: 0px;
+    font-family: Oswald, sans-serif;
+}
+.dark-skin .filterBtn .dropdown-item:hover, .dark-skin .dropdown-item:focus {
+    background-color: #FFF;
+    color: #a2a4a9;
+}
+/* ======================= media query ===================== */
+@media screen and (min-device-width: 200px) and (max-device-width: 768px) {
+    li.nav-item {
+        margin-top: 10px;
+    }
+
+    /* .counter button {
+        font-size: 14px;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #6e6e6e;
+    } */
+
+    .nfts_details .btn_uni {
+        width: 100% !important;
+    }
+}
+@media only screen and (max-width: 985px) {
+    .field_time {
+        margin-bottom: 20px;
+    }
+    
+    .field_time:nth-child(2),.field_time:nth-child(3){
+        padding-left: 0px!important;
+    }
+.forminner-left label {
+    white-space: nowrap;
+}
+}
+@media only screen and (max-width: 767px) {
+    .cardDetail {
+        line-height: 2;
+        padding: 15px 30px;
+    }
+
+    .cardInnerDetail {
+        margin-bottom: 0px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .cardDetail {
+        line-height: 1.5;
+        padding: 8px 30px;
+    }
+
+    .t-price {
+        padding: 15px;
+    }
+}

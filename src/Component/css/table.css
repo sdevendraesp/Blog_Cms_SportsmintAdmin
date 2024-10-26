@@ -1,0 +1,123 @@
+.customTbleStyle header {
+  background: transparent !important;
+}
+
+.sc-iHGNiK {
+  background: transparent !important;
+}
+
+.cstm_padding {
+  padding: 9px 10px !important;
+}
+
+/* ============= react date picker =========== */
+
+.react-datetime-picker__wrapper {
+  border-radius: 8px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+.react-datetime-picker__button:enabled .react-datetime-picker__button__icon,
+.react-datetime-picker__button:enabled .react-datetime-picker__button__icon {
+  stroke: #f3f3f3 !important;
+  
+}
+
+.sc-iHGNiK {
+  color: white !important;
+}
+
+
+/* ============= react date picker =========== */
+
+
+.nft_card .t-price span {
+  position: absolute;
+  right: 2px;
+  background: linear-gradient(90deg, #05d6d900 -4%, #0e868b) border-box !important;
+}
+
+.bonus_tag {
+  background: linear-gradient(90deg, #05d6d996, #f907fc73) border-box !important;
+  border-radius: 0 12px 12px 0;
+  font-size: 12px;
+  left: 0;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  text-align: left;
+  text-shadow: 0 2px 2px #000;
+  top: 0;
+}
+
+
+@media screen and (min-device-width: 1350px) and (max-device-width: 1640px) {
+  .cardDetail {
+    padding: 5px 17px !important;
+  }
+}
+
+@media screen and (min-device-width: 1256px) and (max-device-width: 1350px) {
+  .cardDetail {
+    padding: 3px 17px !important;
+  }
+
+  .cardDetail small {
+    font-size: 10px !important;
+  }
+
+  .cardDetail .cardInnerDetail h5 {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (min-device-width: 800px) and (max-device-width: 1256px) {
+  .cardDetail {
+    padding: 3px 17px !important;
+  }
+
+  .cardDetail small {
+    font-size: 8px !important;
+  }
+
+  .cardDetail .cardInnerDetail h5 {
+    font-size: 14px !important;
+  }
+
+  .cardInnerDetail h5.mb-0{
+    font-size: 12px !important;
+  }
+  
+}
+
+
+/* ==================== shimmer ========================= */
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f000 25%, #7e5d5d00 50%, #f0f0f000 75%) !important;
+}
+
+.Shimmer_box {
+  background-image: linear-gradient(to right, #27bade0a calc(50% - 100px), #0c010d28 50%, #de1cf80e calc(50% + 100px));
+  background-size: 0;
+  /* height: 200px; */
+  position: relative;
+  overflow: hidden;
+}
+
+.Shimmer_box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(200% + 200px);
+  bottom: 0;
+  background-image: inherit;
+  animation: move 2s linear infinite;
+}
+
+@keyframes move {
+  to {
+      transform: translateX(calc(50% + 100px));
+  }
+}

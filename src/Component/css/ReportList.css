@@ -1,0 +1,17 @@
+.report_list .dropdown-menu.show{
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.report_list .dropdown-item{
+    color: white;
+}
+
+.report_list .dropdown-menu.show::-webkit-scrollbar-track {
+    background: #151a27; 
+  }
+
+.form-select option{
+    background-color: #151a27;
+    color: rgb(197, 197, 197);
+}

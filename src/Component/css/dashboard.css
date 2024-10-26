@@ -1,0 +1,178 @@
+.dashCard {
+    display: flex;
+    position: relative;
+    /* align-items: center; */
+    width: 100%;
+    height: 150px;
+    border-radius: 16px;
+    border: 1px solid rgba(234, 234, 234, 0.10);
+    background: linear-gradient(90deg, rgba(5, 214, 217, 0.10) 0.3%, rgba(249, 7, 252, 0.10) 99.65%);
+    /* padding: 25px; */
+}
+
+.dashCard.active {
+    border: 1px solid #05D6D9;
+    background: linear-gradient(90deg, rgba(5, 214, 217, 0.50) 0.3%, rgba(249, 7, 252, 0.50) 99.65%);
+}
+
+.dashCard h5 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.dashcardicon {
+    width: 50px;
+    height: 50px;
+}
+
+.headLine h6 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: uppercase;
+    /* font-family: 'Acumin-RPro'; */
+}
+
+.upcomingContent {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.flagIcon {
+    width: 30px;
+    border: 1px solid #a3a3a3;
+    border-radius: 50%;
+}
+
+.matchDetail span {
+    color: #A5A5A5;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.matchDetail h6 {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.matchDetail h3 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.matchDetail p {
+    color: #A5A5A5;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* .matchDetail::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    height: -webkit-fill-available;
+    background: linear-gradient(90deg, #05d6d952 0.3%, #f907fc4d 99.65%);
+    backdrop-filter: blur(687px);
+    -webkit-backdrop-filter: blur(28px);
+    filter: blur(28px);
+    z-index: -1;
+    border-radius: 30%;
+} */
+
+.matchinner {
+    position: relative;
+    z-index: 11;
+}
+
+.flagdiv p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.flagdiv.rightdiv {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.flagdiv.rightdiv p {
+    color: #A5A5A5;
+}
+
+/* .redcircleBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+span.redcircle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.box.dashBox.dashCard {
+    height: auto;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+@media (max-width:1399px) {
+    .dashCard h5 {
+        font-size: 15px;
+    }
+}
+
+@media (max-width:1299px) {}
+
+@media (max-width:1199px) {}
+
+@media (max-width:1024px) {}
+
+@media (max-width:768px) {
+    .flagdiv.rightdiv {
+        display: flex;
+        align-items: normal;
+    }
+
+    .dashCard h5 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:767px) {
+    .flagIcon {
+        width: 20px;
+    }
+}
+
+@media (max-width:480px) {}
+
+@media (max-width:320px) {
+    .dashCard h5 {
+        font-size: 16px;
+    }
+
+    .headLine h6 {
+        font-size: 14px;
+    }
+}

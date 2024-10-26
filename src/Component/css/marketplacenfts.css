@@ -1,0 +1,182 @@
+.srch_icn {
+    position: absolute;
+    top: 5px;
+    color: white;
+    font-size: 19px;
+    left: 11px;
+}
+
+
+.overalldropdown .dropdown-toggle {
+    background: transparent !important;
+    border-radius: 0px !important;
+    border: 1px solid #3c3c3ced !important;
+    color: #cdcdcd !important;
+}
+
+.srch_field {
+    --bs-body-bg: transparent;
+    /* --bs-border-radius: 0px; */
+    --bs-border-color: #3c3c3c;
+    padding: 7px !important;
+    padding-left: 36px !important;
+}
+
+.form-control {
+    /* height: 41px; */
+    color: gray;
+    /* --bs-body-color: gray; */
+}
+
+.overalldropdown .dropdown-toggle {
+    background: transparent !important;
+    border-radius: 0px !important;
+    border: 1px solid #3c3c3ced !important;
+    color: #cdcdcd !important;
+}
+
+
+.overalldropdown .dropdown-menu {
+    --bs-body-bg: black;
+    background-color: black !important;
+    border: 1px solid #444444 !important;
+    width: 250px;
+    padding: 14px !important;
+    height: 300px;
+    overflow: auto;
+}
+
+
+
+.overalldropdown .dropdown-item {
+    background: linear-gradient(89.6deg, rgb(5 214 217 / 20%) 0.3%, rgb(249 7 252 / 22%) 99.65%) !important;
+    background-color: transparent !important;
+    border: 1px solid rgba(165, 165, 165, 0.5) !important;
+    padding: 9px 18px !important;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.overalldropdown .btn-reset {
+    background-color: transparent !important;
+    border: 1px solid rgba(165, 165, 165, 0.5) !important;
+    border-radius: 0px !important;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.srch_field::placeholder {
+    color: #fff !important;
+}
+
+.cricketcard {
+    height: auto;
+    width: 100%;
+}
+
+.cardDetail,
+.t-price {
+    position: absolute;
+    width: 100%;
+}
+
+.cardDetail {
+    bottom: 0;
+    line-height: 1;
+    padding: 15px 17px;
+}
+
+.cardInnerDetail {
+    margin-bottom: 0px;
+}
+
+.cardDetail small {
+    align-items: center;
+    display: flex;
+    font-family: 'Acumin-RPro' !important;
+    font-size: 14px !important;
+    justify-content: center;
+    opacity: .8;
+    color: #2CBEFF;
+}
+
+.cardInnerDetail h5.mb-0 {
+    margin: 5px 0 !important;
+}
+
+.cardDetail small {
+    align-items: center;
+    display: flex;
+    font-family: 'Acumin-RPro' !important;
+    font-size: 10px !important;
+    justify-content: center;
+    opacity: .8;
+    color: #2CBEFF;
+}
+
+.bonus_tag {
+    background: linear-gradient(90deg, #05d6d996, #f907fc73) border-box !important;
+    border-radius: 7px 12px 12px 0;
+    font-size: 12px;
+    font-style: italic;
+    left: 0;
+    padding: 2px 12px 2px 8px;
+    top: 0;
+}
+
+.t-price {
+    font-family: Oswald, sans-serif;
+    padding: 7px;
+    top: 10px;
+}
+
+.cardInnerDetail h5.mb-0 {
+    margin: 1px 0 !important;
+}
+
+span.nft_flag_img {
+    display: flex;
+    align-items: center;
+}
+
+
+
+@media screen and (min-device-width: 1350px) and (max-device-width: 1640px) {
+    .cardDetail {
+      padding: 15px 17px !important;
+    }
+  }
+  
+  @media screen and (min-device-width: 1256px) and (max-device-width: 1350px) {
+    .cardDetail {
+      padding: 3px 17px !important;
+    }
+  
+    .cardDetail small {
+      font-size: 10px !important;
+    }
+  
+    .cardDetail .cardInnerDetail h5 {
+      font-size: 14px !important;
+    }
+  }
+  
+  @media screen and (min-device-width: 800px) and (max-device-width: 1256px) {
+    .cardDetail {
+      padding: 3px 17px !important;
+    }
+  
+    .cardDetail small {
+      font-size: 8px !important;
+    }
+  
+    .cardDetail .cardInnerDetail h5 {
+      font-size: 15px !important;
+    }
+  
+    .cardInnerDetail h5.mb-0{
+      font-size: 12px !important;
+    }
+    
+  }

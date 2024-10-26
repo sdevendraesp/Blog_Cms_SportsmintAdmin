@@ -1,0 +1,22 @@
+<svg width="516" height="198" viewBox="0 0 516 198" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1261152907">
+<g id="Rectangle 111" filter="url(#filter0_f_1543_2423)">
+<path d="M283 57H366V73V140H283V57Z" fill="#F907FC"/>
+</g>
+<g id="Rectangle 110" filter="url(#filter1_f_1543_2423)">
+<path d="M150 57H233V73V140H150V57Z" fill="#0BD1D9"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_1543_2423" x="133" y="-93" width="383" height="383" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_1543_2423"/>
+</filter>
+<filter id="filter1_f_1543_2423" x="0" y="-93" width="383" height="383" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_1543_2423"/>
+</filter>
+</defs>
+</svg>

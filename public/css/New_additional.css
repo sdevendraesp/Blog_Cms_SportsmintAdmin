@@ -1,0 +1,126 @@
+.customwidth {
+    width: 40%;
+}
+
+.t-price span {
+    font-size: 12px;
+}
+
+.t-price small {
+    font-size: 10px;
+}
+
+.perent_dropdown button#dropdown-secondary-button {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-check:active+.btn-primary:focus,
+.btn-check:checked+.btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show>.btn-primary.dropdown-toggle:focus,
+.btn-check:focus+.btn-primary,
+.btn-primary:focus {
+    box-shadow: none !important;
+}
+
+/* ================= css for profile section start ================= */
+.profile_icon {
+    position: absolute;
+    right: 0px;
+    top: -25px;
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    border: 2px solid #b941ff;
+    border-radius: 50%;
+    background: white;
+    color: black;
+}
+
+#upload_profile_img {
+    /* height: 45px;
+    width: 45px;
+    opacity: 0; */
+    height: 45px;
+    width: 400px;
+    opacity: 0;
+    position: absolute;
+    left: -109px;
+    top: -22px;
+    cursor: pointer;
+}
+
+.profile .profile_fram {
+    border: 1px solid #2e2e2e;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.uploadicon_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================= css for profile section start ================= */
+
+img.award,
+img.trophy,
+img.check-circle {
+    height: 20px;
+    width: auto;
+    aspect-ratio: 1 / 1;
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 992px) {
+    .customwidth {
+        width: 70%;
+    }
+
+    .contestInner .row .d-flex.align-items-center.justify-content-center.col-lg-3::after {
+        content: none !important;
+    }
+}
+
+@media screen and (min-device-width: 200px) and (max-device-width: 768px) {
+    .customwidth {
+        width: 100%;
+    }
+
+    .guaranteedBox {
+        padding: 8px 6px !important;
+    }
+
+    .guarantLeft ul li span,
+    .guarantRight ul li span {
+        font-size: 12px !important;
+    }
+
+    .guarantLeft ul li {
+        margin-right: 5px !important;
+    }
+
+    .contestInner .row .d-flex.align-items-center.justify-content-center.col-lg-3::after {
+        content: none !important;
+    }
+
+    .profile_icon {
+        right: -11px;
+    }
+}
+
+
+.update_bannerimg {
+    transition: 0.5s;
+}
+
+.update_bannerimg:hover {
+    /* text-decoration: underline; */
+    color: #b941ff !important;
+    transition: 0.5s;
+}
