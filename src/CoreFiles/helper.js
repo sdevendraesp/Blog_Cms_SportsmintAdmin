@@ -15,7 +15,8 @@ export const request = (path, data, method, token) => {
         method: method,
         url: `${serverPath}/${path}`,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            data
         },
         dataType: 'json'
     };

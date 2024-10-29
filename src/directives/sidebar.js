@@ -27,17 +27,17 @@ const Sidebar = (props) => {
 
     switch (currentSection) {
       case "press":
-        setToggles({ user: true });
+        setToggles({ cms: true });
         setActiveTab("press");
         break;
 
       case "blog":
-        setToggles({ user: true });
+        setToggles({ cms: true });
         setActiveTab("blog");
         break;
 
       case "categories":
-        setToggles({ user: true });
+        setToggles({ cms: true });
         setActiveTab("categories");
         break;
 

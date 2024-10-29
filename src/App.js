@@ -9,6 +9,7 @@ import LoginNew from "./Pages/LoginNew";
 import Press from "./Pages/cms/Press";
 import Blog from "./Pages/cms/Blog";
 import Categories from "./Pages/cms/Categories";
+import AddBlog from "./Pages/cms/AddBlog";
 
 function App() {
   const loadingStyles = {
@@ -77,6 +78,18 @@ function App() {
                 >
                   {" "}
                   <Categories />{" "}
+                </Suspense>
+              }
+            />
+
+            <Route
+              path={`${config.baseUrl}add-blog`}
+              element={
+                <Suspense
+                  fallback={<div style={loadingStyles}>Loading...</div>}
+                >
+                  {" "}
+                  <AddBlog />{" "}
                 </Suspense>
               }
             />

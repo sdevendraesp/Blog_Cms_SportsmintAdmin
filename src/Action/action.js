@@ -520,3 +520,18 @@ export const getwinninglistByMatchIdAction = (token, data) => {
     return res.data;
   });
 };
+
+
+// blog apis
+
+export const insertBlogCategory = (data) => {
+  return postRequest("administrator/insertBlogCategory", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const insertBlogs = (data) => {
+  return postRequest("administrator/insertBlogs", data).then((res) => {
+    return res.data;
+  });
+};
