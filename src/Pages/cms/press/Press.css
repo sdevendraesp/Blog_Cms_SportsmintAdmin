@@ -14,3 +14,9 @@
     background: linear-gradient(133deg, #41d2ff 0%, #7e42ff 47.4%, #dd3fff 96.19%);
     color: white;
 }
+
+.list_image{
+    width: 90px;
+    height: auto;
+    padding: 8px 0px;
+}

@@ -2,7 +2,7 @@
   "name": "step_ap",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sportsmint.espsofttechnologies.com/smm_ap/",
+  "homepage": "https://sportsmint.espsofttechnologies.com/cms",
   "dependencies": {
     "@blueprintjs/core": "^5.13.1",
     "@emotion/react": "^11.11.4",

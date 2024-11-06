@@ -3,7 +3,7 @@ const config = {
   // apiUrl:"http://localhost:8001/v1" ,
   //   sporturl:"http://localhost:8001/v2" ,
 
-  baseUrl: "/smm_ap/",
+  baseUrl: "/cms/",
   apiUrl: "https://web3sports.espsofttechnologies.com/v1",
   sporturl: "https://web3sports.espsofttechnologies.com/v2",
   bscurl: 'https://testnet.bscscan.com/tx/',
@@ -12,7 +12,7 @@ const config = {
    CHAIN:"0x61",
   //dev addresss
 
-  imageUrl: "https://espsofttechnologies.com/media/",
+  imageUrl: "https://web3sports.s3.ap-south-1.amazonaws.com/", // "https://espsofttechnologies.com/media/",
   /*********************** */
 
 

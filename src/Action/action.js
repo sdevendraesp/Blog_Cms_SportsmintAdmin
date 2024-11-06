@@ -522,16 +522,104 @@ export const getwinninglistByMatchIdAction = (token, data) => {
 };
 
 
-// blog apis
+// blog categories start
 
 export const insertBlogCategory = (data) => {
+  console.log("data", data);
   return postRequest("administrator/insertBlogCategory", data).then((res) => {
     return res.data;
   });
 };
 
+export const getBlogCategory = (token, data) => {
+  return getRequest(`administrator/getBlogCategory`, {
+  }).then((res) => {
+    return res.data;
+  });
+};
+
+export const getPressRelease = (token, data) => {
+  return getRequest(`administrator/getPressRelease`, {
+  }).then((res) => {
+    return res.data;
+  });
+};
+
+export const getBlogAllBlogs = (token, data) => {
+  return getRequest(`administrator/getBlogAllBlogs`, {
+  }).then((res) => {
+    return res.data;
+  });
+};
+
+
+export const updateBlogCategory = (data) => {
+  return postRequest("administrator/updateBlogCategory", data).then((res) => {
+    return res.data;
+  });
+};
+
+
+export const deleteBlogCategory = (data) => {
+  return postRequest("administrator/deleteBlogCategory", data).then((res) => {
+    return res.data;
+  });
+};
+
+// blog categories end
+
 export const insertBlogs = (data) => {
-  return postRequest("administrator/insertBlogs", data).then((res) => {
+  return postRequestFormData("administrator/insertBlogs", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const pressRelease = (data) => {
+  return postRequestFormData("administrator/pressRelease", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const updatePressRelease = (data) => {
+  return postRequestFormData("administrator/updatePressRelease", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const deletePressRelease = (data) => {
+  return postRequest("administrator/deletePressRelease", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const statusChangeOfComments = (data) => {
+  return postRequest("administrator/statusChangeOfComments", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const statusChangeOfBlog = (data) => {
+  return postRequest("administrator/statusChangeOfBlog", data).then((res) => {
+    return res.data;
+  });
+};
+
+
+
+export const getCommentsByBlog = (data) => {
+  return postRequest("administrator/getCommentsByBlog", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const deleteBlog = (data) => {
+  return postRequest("administrator/deleteBlog", data).then((res) => {
+    return res.data;
+  });
+};
+
+export const updateBlogs = (data) => {
+  return postRequestFormData("administrator/updateBlogs", data).then((res) => {
     return res.data;
   });
 };

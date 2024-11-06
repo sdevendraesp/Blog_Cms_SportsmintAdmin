@@ -6,10 +6,14 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import config from "./CoreFiles/config";
 import { UserProvider } from "./Context/ToggleContext";
 import LoginNew from "./Pages/LoginNew";
-import Press from "./Pages/cms/Press";
-import Blog from "./Pages/cms/Blog";
+import Press from "./Pages/cms/press/Press";
+import Blog from "./Pages/cms/blog/Blog";
 import Categories from "./Pages/cms/Categories";
-import AddBlog from "./Pages/cms/AddBlog";
+import AddBlog from "./Pages/cms/blog/AddBlog";
+import PressForm from "./Pages/cms/press/AddPress";
+import UpdatePress from "./Pages/cms/press/UpdatePress";
+import UpdateBlog from "./Pages/cms/blog/UpdateBlog";
+import Comments from "./Pages/cms/Comments";
 
 function App() {
   const loadingStyles = {
@@ -69,6 +73,18 @@ function App() {
                 </Suspense>
               }
             />
+            
+            <Route
+              path={`${config.baseUrl}comments`}
+              element={
+                <Suspense
+                  fallback={<div style={loadingStyles}>Loading...</div>}
+                >
+                  {" "}
+                  <Comments />{" "}
+                </Suspense>
+              }
+            />
 
             <Route
               path={`${config.baseUrl}categories`}
@@ -90,6 +106,42 @@ function App() {
                 >
                   {" "}
                   <AddBlog />{" "}
+                </Suspense>
+              }
+            />
+
+            <Route
+              path={`${config.baseUrl}add-press`}
+              element={
+                <Suspense
+                  fallback={<div style={loadingStyles}>Loading...</div>}
+                >
+                  {" "}
+                  <PressForm />{" "}
+                </Suspense>
+              }
+            />
+
+            <Route
+              path={`${config.baseUrl}update-press`}
+              element={
+                <Suspense
+                  fallback={<div style={loadingStyles}>Loading...</div>}
+                >
+                  {" "}
+                  <UpdatePress />{" "}
+                </Suspense>
+              }
+            />
+
+            <Route
+              path={`${config.baseUrl}update-blog`}
+              element={
+                <Suspense
+                  fallback={<div style={loadingStyles}>Loading...</div>}
+                >
+                  {" "}
+                  <UpdateBlog />{" "}
                 </Suspense>
               }
             />

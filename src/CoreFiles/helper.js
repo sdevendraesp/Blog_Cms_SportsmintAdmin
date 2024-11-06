@@ -33,8 +33,8 @@ export const request = (path, data, method, token) => {
     res.then(res1 => { })
     return res
 }
-export const sportrequest = (path, data, method , token) => {
-    
+export const sportrequest = (path, data, method, token) => {
+
 
     var options = {
         method: method,
@@ -57,7 +57,7 @@ export const sportrequest = (path, data, method , token) => {
     return res
 }
 
-export const requestFormData = (path, data, method ,token) => {
+export const requestFormData = (path, data, method, token) => {
 
     var form_data = new FormData();
     for (var key in data) {
@@ -66,25 +66,28 @@ export const requestFormData = (path, data, method ,token) => {
     var options = {
         method: method,
         url: `${serverPath}/${path}`,
-        data : form_data,
-        headers: { authorization: token.Authorization },
+        data: form_data,
+        headers: {
+            'Content-Type': 'application/json',
+            data
+        },
     };
     let res = axios(options);
     res.then(res1 => { })
     return res
 }
 
-export const postRequest = async (path, data ,token) => await request(path, data, 'POST',token)
-export const getRequest = async (path, data, token ) => await request(path, data, 'GET',token)
-export const putRequest = async (path, data , token) => await request(path, data, 'PUT' ,token)
-export const deleteRequest = async (path, data , token) => await request(path, data, 'DELETE',token)
+export const postRequest = async (path, data, token) => await request(path, data, 'POST', token)
+export const getRequest = async (path, data, token) => await request(path, data, 'GET', token)
+export const putRequest = async (path, data, token) => await request(path, data, 'PUT', token)
+export const deleteRequest = async (path, data, token) => await request(path, data, 'DELETE', token)
 
 
 
-export const postRequestFormData = async (path, data , token) => await requestFormData(path, data, 'POST',token)
+export const postRequestFormData = async (path, data, token) => await requestFormData(path, data, 'POST', token)
 
 
-export const postsportrequest = async (path, data ,token) => await sportrequest(path, data, 'POST',token)
-export const getsportrequest = async (path, data, token ) => await sportrequest(path, data, 'GET',token)
-export const putsportrequest = async (path, data , token) => await sportrequest(path, data, 'PUT' ,token)
-export const deletesportrequest = async (path, data , token) => await sportrequest(path, data, 'DELETE',token)
+export const postsportrequest = async (path, data, token) => await sportrequest(path, data, 'POST', token)
+export const getsportrequest = async (path, data, token) => await sportrequest(path, data, 'GET', token)
+export const putsportrequest = async (path, data, token) => await sportrequest(path, data, 'PUT', token)
+export const deletesportrequest = async (path, data, token) => await sportrequest(path, data, 'DELETE', token)
