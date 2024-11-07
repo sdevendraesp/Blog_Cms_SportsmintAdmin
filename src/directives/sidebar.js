@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import config from "../CoreFiles/config";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import { UserContext } from "../Context/ToggleContext";
@@ -17,6 +17,8 @@ const Sidebar = (props) => {
   const { user } = useContext(UserContext);
   const [toggles, setToggles] = useState({});
   const loginData = useSelector((state) => state.auth.LoginDetails);
+
+  console.log("loginData", loginData);
 
   useEffect(() => {
     // Update the active tab when the page URL changes
@@ -129,7 +131,7 @@ const Sidebar = (props) => {
                     className="treeview-menu"
                     style={{ display: toggles["cms"] ? "block" : "none" }}
                   >
-                    {loginData.role == 1 || loginData.role == 5 ? (
+                    {loginData.role == 6 ? (
                       <>
                         {console.log("activeTab", activeTab)}
                         <li
@@ -157,7 +159,7 @@ const Sidebar = (props) => {
                       ""
                     )}
 
-                    {loginData.role == 1 || loginData.role == 5 ? (
+                    {loginData.role == 6 ? (
                       <>
                         {console.log("activeTab", activeTab)}
                         <li
@@ -185,7 +187,7 @@ const Sidebar = (props) => {
                       ""
                     )}
 
-                    {loginData.role == 1 || loginData.role == 5 ? (
+                    {loginData.role == 6 ? (
                       <>
                         {console.log("activeTab", activeTab)}
                         <li

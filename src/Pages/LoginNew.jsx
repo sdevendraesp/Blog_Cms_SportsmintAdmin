@@ -7,7 +7,7 @@ import config from '../CoreFiles/config';
 import * as Yup from 'yup';
 import { LoginAction } from '../Action/action';
 import Loader from "../Component/Loader";
-import { FaUser,FaLock  } from "react-icons/fa";
+import { FaUser, FaLock } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,9 +42,21 @@ const LoginNew = () => {
           payload: res.data,
           token: res.data.authToken,
         });
-        toast.success(res.msg);
+
         setLoader(false);
-        navigate(`${config.baseUrl}press`);
+
+        console.log("res.data", res.data.role !== 6);
+
+        if (res.data.role == 6) {
+          toast.success(res.msg);
+          setTimeout(() => {
+            navigate(`${config.baseUrl}press`);
+          }, 800);
+        } else {
+          toast.error("Wrong Username");
+        }
+
+
       } else {
         toast.error(res.msg);
         setLoader(false);
@@ -56,7 +68,7 @@ const LoginNew = () => {
 
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <div className="hold-transition theme-primary bg-img">
         <div className="container h-p100">
           <div className="row align-items-center justify-content-md-center h-p100 opacity_70">
@@ -66,7 +78,7 @@ const LoginNew = () => {
                   <div className="bg-blue rounded10 shadow-lg admin-login">
                     <div className="content-top-agile p-20 pb-0">
                       <center className="loginLogo">
-                        <img  alt='' width={"250px"} src={`${config.baseUrl}images/logo.svg`} />
+                        <img alt='' width={"250px"} src={`${config.baseUrl}images/logo.svg`} />
                       </center>
                       <h2 className="text-white">Admin Panel</h2>
                       <p className="mb-0">Sign in to SportsMint Admin.</p>
@@ -99,7 +111,7 @@ const LoginNew = () => {
                           <div className="form-group mb-3">
                             <div className="input-group">
                               <span className="input-group-text">
-                                <FaLock/>
+                                <FaLock />
                               </span>
                               <Field
                                 type="password"
@@ -117,19 +129,19 @@ const LoginNew = () => {
                           <div className="row">
                             <div className="col-12 text-center">
                               {
-                                loader?<button
-                                type=""
-                                disabled
-                                className="btn btn-primary mt-10"
-                              >
-                                <Loader/>
-                              </button>
-                            :  <button
-                                type="submit"
-                                className="btn btn-primary mt-10"
-                              >
-                                SIGN IN
-                              </button>
+                                loader ? <button
+                                  type=""
+                                  disabled
+                                  className="btn btn-primary mt-10"
+                                >
+                                  <Loader />
+                                </button>
+                                  : <button
+                                    type="submit"
+                                    className="btn btn-primary mt-10"
+                                  >
+                                    SIGN IN
+                                  </button>
                               }
                             </div>
                           </div>
