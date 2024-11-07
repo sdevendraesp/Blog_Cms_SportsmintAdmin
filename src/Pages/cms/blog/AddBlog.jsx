@@ -77,7 +77,18 @@ export default function BlogForm() {
         },
     });
 
+    // const handleTagChange = (newTags) => {
+    //     setTags(newTags);
+    //     formik.setFieldValue("labels", newTags);
+    // };
+
     const handleTagChange = (newTags) => {
+        console.log('newTags', newTags);
+        
+        if (newTags.length > 5) {
+            alert('You can add only 5 hashtags.');
+            return;
+        }
         setTags(newTags);
         formik.setFieldValue("labels", newTags);
     };

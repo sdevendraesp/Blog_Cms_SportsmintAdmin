@@ -36,7 +36,7 @@ export default function UpdateBlog() {
     const [tags, setTags] = useState(arr || []);
 
     console.log("tags", tags);
-    
+
 
     useEffect(() => {
         // Set previousData whenever `data` changes.
@@ -58,7 +58,7 @@ export default function UpdateBlog() {
             setGetBlogCategoryList([]);
         }
     };
-    
+
 
     const formik = useFormik({
         enableReinitialize: true, // This allows reinitialization when `initialValues` changes
@@ -117,6 +117,12 @@ export default function UpdateBlog() {
     });
 
     const handleTagChange = (newTags) => {
+        console.log('newTags', newTags);
+
+        if (newTags.length > 5) {
+            alert('You can add only 5 hashtags.');
+            return;
+        }
         setTags(newTags);
         formik.setFieldValue("labels", newTags);
     };

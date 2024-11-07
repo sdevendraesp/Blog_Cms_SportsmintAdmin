@@ -131,8 +131,8 @@ export default function Blog() {
             center: true
         },
         {
-            name: 'Categories',
-            selector: row => row.categories_name,
+            name: 'Category Name',
+            selector: row => row.category_name,
             center: true,
             grow: 2,
         },

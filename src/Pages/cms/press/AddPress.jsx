@@ -72,9 +72,16 @@ export default function PressForm() {
     });
 
     const handleTagChange = (newTags) => {
+        console.log('newTags', newTags);
+        
+        if (newTags.length > 5) {
+            alert('You can add only 5 hashtags.');
+            return;
+        }
         setTags(newTags);
         formik.setFieldValue("hashtag", newTags);
     };
+
 
     const handleFileChange = (event) => {
         formik.setFieldValue("pressImg", event.currentTarget.files[0]);
