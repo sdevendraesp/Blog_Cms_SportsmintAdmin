@@ -14,10 +14,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { deletePressRelease, getPressRelease } from "../../../Action/action";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import moment from "moment/moment";
 
 export default function Press() {
 
     const [PressReleaseData, setPressReleaseData] = useState([])
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const navigate = useNavigate();
 
@@ -25,7 +28,21 @@ export default function Press() {
         navigate(`${config.baseUrl}update-press`, { state: data });
     }
 
+    const onChangeRowsPerPage = (page) => {
+        setItemsPerPage(page);
+    };
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
     const columns = [
+        {
+            name: "S.No",
+            selector: (row, index) => index + 1 + (currentPage - 1) * itemsPerPage,
+            width: "60px",
+            center: "true",
+        },
         {
             name: 'Title',
             selector: row => row.title,
@@ -36,10 +53,30 @@ export default function Press() {
             selector: row => row.url,
             center: true
         },
+        // {
+        //     name: 'Image',
+        //     selector: row => <><img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" /></>,
+        //     center: true
+        // },
         {
             name: 'Image',
-            selector: row => <><img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" /></>,
+            selector: row => <>
+                {row.image
+                    ?
+                    <a href={config.imageUrl + row.image} target='_blank'>
+                        <img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" />
+                    </a>
+                    :
+                    <img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" />
+                }
+            </>,
             center: true
+        },
+        {
+            name: 'Created Date',
+            selector: row => moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
+            center: true,
+            grow: 1
         },
         {
             name: 'Short Description',
@@ -63,6 +100,7 @@ export default function Press() {
             </>,
             center: true
         },
+
     ];
 
     useEffect(() => {
@@ -135,7 +173,9 @@ export default function Press() {
                                     <Button>Add</Button>
                                 </Link>
                             </div>
-                            <DataTable columns={columns} data={PressReleaseData} customStyles={customStyles} />
+                            <DataTable columns={columns} data={PressReleaseData} customStyles={customStyles}
+                                onChangePage={handlePageChange}
+                                onChangeRowsPerPage={onChangeRowsPerPage} />
                         </div>
                     </div>
                 </div>

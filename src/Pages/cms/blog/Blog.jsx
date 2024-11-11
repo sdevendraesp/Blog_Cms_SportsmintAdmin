@@ -10,12 +10,16 @@ import config from "../../../CoreFiles/config";
 import { deleteBlog, getBlogAllBlogs, statusChangeOfBlog } from "../../../Action/action";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import moment from "moment/moment";
 
 export default function Blog() {
 
     const [blogListData, setBlogListData] = useState([])
 
     const navigate = useNavigate()
+
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
 
 
     // const featuredValue = blogListData.map((value) => {
@@ -45,12 +49,12 @@ export default function Blog() {
         const confirmDelete = async (itemId) => {
             const result = await Swal.fire({
                 title: 'Are you sure?',
-                text: "This action cannot be undone!",
+                // text: "This action cannot be undone!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, Featured!',
+                confirmButtonText: isfeatured === 0 ? 'Yes, Unfeature it' : 'Yes, Feature it',
                 cancelButtonText: 'Cancel'
             });
 
@@ -63,7 +67,7 @@ export default function Blog() {
                 });
                 if (res.success) {
                     // Toast.success("This comment is approved!");
-                    Swal.fire("success", isfeatured === 0 ? 'Unfeatured' : 'Featured!', "success");
+                    Swal.fire("success", isfeatured === 0 ? 'Unfeature' : 'Feature!', "success");
                     // resetForm();
 
                     setTimeout(() => {
@@ -94,6 +98,12 @@ export default function Blog() {
 
     const columns = [
         {
+            name: "S.No",
+            selector: (row, index) => index + 1 + (currentPage - 1) * itemsPerPage,
+            width: "60px",
+            center: "true",
+        },
+        {
             name: 'Title',
             selector: row => row.title.slice(0, 20) + '...',
             center: true
@@ -101,15 +111,19 @@ export default function Blog() {
         {
             name: 'Description',
             selector: row => {
-                const htmlContent = "<p>Master the art & science of writing the best blog titles. for meta description</p>";
-                const textContent = htmlContent.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
-
-                return <>{textContent}</>; // Render as plain text without styles
+                // Remove HTML tags and inline styles using a regex
+                const plainText = row.description.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 80).trim();
+                return plainText;
             },
-
-            //row.description.slice(0, 20) + '...',
             center: true
         },
+        {
+            name: 'Created Date',
+            selector: row => moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
+            center: true,
+            grow: 1
+        },
+
         {
             name: 'Heading',
             selector: row => row.short_description.slice(0, 20) + '...',
@@ -117,7 +131,16 @@ export default function Blog() {
         },
         {
             name: 'Image',
-            selector: row => <><img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" /></>,
+            selector: row => <>
+                {row.image
+                    ?
+                    <a href={config.imageUrl + row.image} target='_blank'>
+                        <img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" />
+                    </a>
+                    :
+                    <img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" />
+                }
+            </>,
             center: true
         },
         {
@@ -134,17 +157,17 @@ export default function Blog() {
             name: 'Category Name',
             selector: row => row.category_name,
             center: true,
-            grow: 2,
+            // grow: 2,
         },
         {
             name: 'Comments',
             selector: row => <><Button onClick={() => { handleViewComment(row) }}>View Comment</Button></>,
             center: true,
-            grow: 2,
+            grow: 1,
         },
         {
             name: 'Action',
-            grow: 3,
+            grow: 2,
             selector: row => <div>
                 <Button className="me-2" onClick={() => { handleUpdate(row) }}>Update</Button>
                 <Button className="me-2" variant="primary" onClick={
@@ -152,7 +175,7 @@ export default function Blog() {
                 }>
                     Delete
                 </Button>
-                <><Button className="me-2" onClick={() => { handleFeaturedUnfeatured(row) }}>{row.is_featured === 0 ? "Featured" : "Unfeatured"}</Button></>
+                <><Button className="me-2" onClick={() => { handleFeaturedUnfeatured(row) }}>{row.is_featured === 0 ? "Feature" : "Unfeature"}</Button></>
             </div>,
             center: true
         },
@@ -215,6 +238,14 @@ export default function Blog() {
         }
     };
 
+    const onChangeRowsPerPage = (page) => {
+        setItemsPerPage(page);
+      };
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+      };
+
     return (
         <>
             <div className="wrapper">
@@ -234,7 +265,10 @@ export default function Blog() {
                                     </Link>
                                 </Col>
                             </Row>
-                            <DataTable columns={columns} data={blogListData} customStyles={customStyles} pagination />
+                            <DataTable columns={columns} data={blogListData} customStyles={customStyles} pagination
+                                onChangePage={handlePageChange}
+                                onChangeRowsPerPage={onChangeRowsPerPage}
+                            />
                         </div>
                     </div>
                 </div>

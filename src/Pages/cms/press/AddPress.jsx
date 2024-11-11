@@ -7,12 +7,12 @@ import '../press/Press.css';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { getBlogCategory, insertBlogCategory, insertBlogs, pressRelease } from '../../../Action/action';
-import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
 import Header from "../../../directives/header";
 import Sidebar from "../../../directives/sidebar";
 import { useNavigate } from "react-router-dom";
 import config from "../../../CoreFiles/config";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function PressForm() {
 
@@ -73,9 +73,9 @@ export default function PressForm() {
 
     const handleTagChange = (newTags) => {
         console.log('newTags', newTags);
-        
+
         if (newTags.length > 5) {
-            alert('You can add only 5 hashtags.');
+            toast.error('You can add only 5 hashtags.');
             return;
         }
         setTags(newTags);
@@ -109,6 +109,7 @@ export default function PressForm() {
 
     return (
         <>
+            <Toaster />
             <div className="wrapper">
                 <Header />
                 <Sidebar />
@@ -152,7 +153,7 @@ export default function PressForm() {
                                             ) : null}
                                         </Col>
 
-                                        <Col md={6}>
+                                        <Col md={6} className="my-2">
                                             <Form.Label>Short Description</Form.Label>
                                             <Form.Control
                                                 type="text"

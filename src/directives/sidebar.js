@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import config from "../CoreFiles/config";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 import { UserContext } from "../Context/ToggleContext";
@@ -58,11 +58,20 @@ const Sidebar = (props) => {
   };
 
   const logout = async () => {
-    Cookies.remove("loginSuccessMrMintAdmin");
+    Cookies.remove("loginSuccessMrMintAdminCms");
     window.location.href = config.baseUrl;
     localStorage.clear();
     window.location.reload()
   };
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (loginData.role !== 6) {
+      navigate(`${config.baseUrl}`);
+    }
+  }, [])
+
 
 
   const [collapsed, setCollapsed] = useState(false)
@@ -109,8 +118,8 @@ const Sidebar = (props) => {
             <div className="multinav-scroll" style={{ height: "100%" }}>
               {/* sidebar menu*/}
               <ul className="sidebar-menu" id="sidebar-menu" data-widget="tree">
-                <li className={toggles["cms"] ? "active menu-open" : ""}>
-                  <Link
+                <li className={true ? "active menu-open" : ""}> {/* toggles["cms"] */}
+                  {/* <Link
                     style={{ cursor: "pointer" }}
                     onClick={() => togglefunc("cms")}
                   >
@@ -126,10 +135,10 @@ const Sidebar = (props) => {
                     <span className="pull-right-container">
                       <i className="fa fa-angle-right pull-right" />
                     </span>
-                  </Link>
+                  </Link> */}
                   <ul
                     className="treeview-menu"
-                    style={{ display: toggles["cms"] ? "block" : "none" }}
+                    style={{ display: true ? "block" : "none" }} // toggles["cms"]
                   >
                     {loginData.role == 6 ? (
                       <>

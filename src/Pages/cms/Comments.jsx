@@ -9,14 +9,19 @@ import { Button, Toast } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getCommentsByBlog, statusChangeOfComments } from "../../Action/action";
 import Swal from "sweetalert2";
+import { IoMdArrowBack } from "react-icons/io";
+import Modal from 'react-bootstrap/Modal';
 
 export default function Comments() {
 
+    const [commentModal, setCommentModal] = useState("");
     const location = useLocation();
+    const navigate = useNavigate()
     const id = location.state;
 
     const [commentList, setCommentList] = useState([])
 
+    const [show, setShow] = useState(false);
 
 
     const handleApproveDisapprove = (data) => {
@@ -26,12 +31,12 @@ export default function Comments() {
         const confirmDelete = async (itemId) => {
             const result = await Swal.fire({
                 title: 'Are you sure?',
-                text: "This action cannot be undone!",
+                // text: "This action cannot be undone!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, Approve!',
+                confirmButtonText: isapprove === 0 ? 'Yes, Disapprove it' : 'Yes, Approve it', //'Yes, Approve!',
                 cancelButtonText: 'Cancel'
             });
 
@@ -46,15 +51,17 @@ export default function Comments() {
                     // Toast.success("This comment is approved!");
                     Swal.fire("success", "Approved.", "success");
                     // resetForm();
-                    window.location.reload();
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 800);
                 } else {
                     Swal.fire("Failed!", res.msg, "error");
                 }
 
                 Swal.fire(
-                    'Deleted!',
-                    'The item has been deleted.',
-                    'success'
+                    // isapprove === 0 ? 'Successful' : 'Successful',
+                    // isapprove === 0 ? 'Successful' : 'Successful',
+                    'Successful'
                 );
             }
         };
@@ -62,10 +69,40 @@ export default function Comments() {
         confirmDelete()
     }
 
+
+    const handleShow = (data) => {
+        setCommentModal(data); // Set the comment
+        setShow(true); // Show the modal
+    };
+
+    // Function to handle closing the modal
+    const handleClose = () => {
+        setShow(false); // Hide the modal
+    };
+
     const columns = [
         {
+            name: "S.No",
+            selector: (row, index) => index + 1,
+            width: "60px",
+            center: "true",
+        },
+        {
             name: 'Comment',
-            selector: row => row.comment,
+            selector: row =>
+                <>
+                    <div>
+                        {row.comment.slice(0, 30) + '...'}
+                        <span
+                            style={{ color: 'rgb(123 123 255)', cursor: 'pointer' }}
+                            onClick={() => handleShow(row.comment)}
+                        >
+                            Read More
+                        </span>
+                    </div>
+                </>
+            ,
+            grow: 3,
             center: true
         },
         {
@@ -75,7 +112,7 @@ export default function Comments() {
         },
         {
             name: 'Website',
-            selector: row => row.website,
+            selector: row => <a href={row.website} target="_blank">{row.website}</a>,
             center: true
         },
         {
@@ -89,6 +126,10 @@ export default function Comments() {
             center: true
         },
     ];
+
+    const hadleback = () => {
+        navigate(-1)
+    }
 
     useEffect(() => {
         comment()
@@ -118,7 +159,12 @@ export default function Comments() {
                     <div className="container-full">
 
                         <div className="p-3">
-                            <div className="d-flex justify-content-between align-items-center mt-2">
+                            <div className="mt-2">
+
+                                <div onClick={hadleback}>
+                                    <span className="fs-3" style={{ cursor: 'pointer' }}><IoMdArrowBack /></span>
+                                </div>
+
                                 <h2 className="press">Comments</h2>
                             </div>
                             <DataTable
@@ -131,6 +177,23 @@ export default function Comments() {
                     </div>
                 </div>
             </div>
+
+            {/* Modal */}
+            <Modal
+                className="comment_modal"
+                show={show}
+                onHide={handleClose}
+                dialogClassName="modal-90w"
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>
+                        {commentModal} {/* Dynamically display the comment */}
+                    </p>
+                </Modal.Body>
+            </Modal>
         </>
     );
 }

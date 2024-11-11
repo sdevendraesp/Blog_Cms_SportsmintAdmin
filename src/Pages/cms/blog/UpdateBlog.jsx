@@ -12,6 +12,7 @@ import { getBlogCategory, insertBlogs, updateBlogs } from '../../../Action/actio
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import config from "../../../CoreFiles/config";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function UpdateBlog() {
 
@@ -120,7 +121,7 @@ export default function UpdateBlog() {
         console.log('newTags', newTags);
 
         if (newTags.length > 5) {
-            alert('You can add only 5 hashtags.');
+            toast.error('You can add only 5 hashtags.');
             return;
         }
         setTags(newTags);
@@ -132,6 +133,9 @@ export default function UpdateBlog() {
     };
 
     return (
+
+        <>
+        <Toaster />
         <div className="wrapper">
             <Header />
             <Sidebar />
@@ -146,7 +150,9 @@ export default function UpdateBlog() {
 
                         <div className="mt-4">
                             <Form onSubmit={formik.handleSubmit}>
-                                <Row>
+
+                                <Row className="mt-4">
+
                                     <Col md={6}>
                                         <Form.Label>Categories</Form.Label>
                                         <Form.Select
@@ -165,9 +171,8 @@ export default function UpdateBlog() {
                                             <div className="text-danger">{formik.errors.categories}</div>
                                         )}
                                     </Col>
-                                </Row>
 
-                                <Row className="mt-4">
+
                                     <Col lg={6} className="my-2">
                                         <Form.Label>Meta Description</Form.Label>
                                         <Form.Control
@@ -211,6 +216,14 @@ export default function UpdateBlog() {
                                     </Col>
 
                                     <Col lg={6} className="my-2">
+                                        <Form.Label>Labels</Form.Label>
+                                        <TagsInput value={tags} onChange={handleTagChange} />
+                                        {formik.touched.labels && formik.errors.labels && (
+                                            <div className="text-danger">{formik.errors.labels}</div>
+                                        )}
+                                    </Col>
+
+                                    <Col lg={6} className="my-2">
                                         <Form.Label>Image</Form.Label>
                                         <Form.Control
                                             type="file"
@@ -223,15 +236,23 @@ export default function UpdateBlog() {
                                         {formik.touched.pressImg && formik.errors.pressImg && (
                                             <div className="text-danger">{formik.errors.pressImg}</div>
                                         )}
+
+                                        <div className="mt-3">
+                                            <img src={previousData.image ? (config.imageUrl + previousData.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} alt=""
+                                                style={{ width: 'auto', height: '200px' }}
+                                            />
+                                        </div>
                                     </Col>
 
-                                    <Col lg={6} className="my-2">
-                                        <Form.Label>Labels</Form.Label>
-                                        <TagsInput value={tags} onChange={handleTagChange} />
-                                        {formik.touched.labels && formik.errors.labels && (
-                                            <div className="text-danger">{formik.errors.labels}</div>
-                                        )}
-                                    </Col>
+                                    {/* <Col lg={6}>
+                                            <img src={previousData.image ? (config.imageUrl + previousData.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} alt="" 
+                                            style={{width:'auto', height:'200px'}}
+                                            />
+                                        </Col> */}
+
+                                    {/* <Row>
+                                        
+                                    </Row> */}
 
                                     <Col sm={12} className="mt-4">
                                         <Form.Label>Description</Form.Label>
@@ -254,5 +275,6 @@ export default function UpdateBlog() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

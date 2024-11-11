@@ -24,17 +24,20 @@ export default function Categories() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+
     const handleCloseUpdate = () => setShowupdate(false);
     const handleShowUpdate = () => setShowupdate(true);
 
     const [categoriesData, setCategoriesData] = useState([])
 
     const validationSchema = Yup.object().shape({
-        categories: Yup.string().required('Categories is required.'),
+        categories: Yup.string().required('Category is required.'),
     });
 
     const validationSchemaUpdate = Yup.object().shape({
-        categories: Yup.string().required('Categories is required.'),
+        categories: Yup.string().required('Category is required.'),
     });
 
     const initialValues = {
@@ -48,6 +51,10 @@ export default function Categories() {
 
         categories: setTimeout(() => categoriesUpdate?.category_name, 500)
     };
+
+    const onChangeRowsPerPage = (page) => {
+        setItemsPerPage(page);
+      };
 
 
     const handleDelete = (row) => {
@@ -91,14 +98,22 @@ export default function Categories() {
 
     const columns = [
         {
+            name: "S.No",
+            selector: (row, index) => index + 1 + (currentPage - 1) * itemsPerPage,
+            width: "60px",
+            center: "true",
+        },
+        {
             name: 'Categories',
             selector: row => row?.category_name,
-            center: true
+            center: true,
+            grow: 1
         },
         {
             name: 'Created Date',
-            selector: row => row?.created_at, //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
-            center: true
+            selector: row => moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
+            center: true,
+            grow: 1
         },
         {
             name: 'Action',
@@ -118,9 +133,14 @@ export default function Categories() {
                     Delete
                 </Button>
             </>,
+            grow: 1,
             center: true
         },
     ];
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+      };
 
     const { values, errors, touched, handleBlur, setFieldValue, handleSubmit, handleChange } = useFormik({
         initialValues: initialValues,
@@ -159,7 +179,7 @@ export default function Categories() {
                     toast.success("Category updated successfully!");
                     Swal.fire("success", "Blog category updated successfully.", "success");
                     resetForm();
-                    
+
                 } else {
                     Swal.fire("Failed!", res.msg, "error");
                 }
@@ -217,6 +237,8 @@ export default function Categories() {
                             </div>
                             <DataTable
                                 columns={columns}
+                                onChangeRowsPerPage={onChangeRowsPerPage}
+                                onChangePage={handlePageChange}
                                 data={categoriesData}
                                 customStyles={customStyles}
                                 pagination
@@ -226,17 +248,17 @@ export default function Categories() {
                 </div>
 
                 {/* =============== modal form start ============= */}
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={show} onHide={handleClose} backdrop="static">
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Category</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label>Categories</Form.Label>
+                                <Form.Label>Add Category</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder="Add Categories"
+                                    placeholder="Add Category"
                                     // autoFocus
                                     name="categories"
                                     value={values.categories}
@@ -252,27 +274,27 @@ export default function Categories() {
                     <Modal.Footer>
                         <Button variant="primary" onClick={() => {
                             handleSubmit()
-                            if (Object.keys(errors).length === 0) {
+                            if (errors.length === 0) {
                                 handleClose()
                             }
                         }}>
-                            Add Categories
+                            Add Category
                         </Button>
                     </Modal.Footer>
                 </Modal>
 
                 {/* update categories */}
-                <Modal show={showupdate} onHide={handleCloseUpdate}>
+                <Modal show={showupdate} onHide={handleCloseUpdate} backdrop="static">
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Update Category</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Label>Categories</Form.Label>
+                                <Form.Label>Category</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder="Add Categories"
+                                    placeholder="Add Category"
                                     // autoFocus
                                     name="categories"
                                     value={formik.values.categories}
@@ -292,7 +314,7 @@ export default function Categories() {
                                 handleCloseUpdate()
                             }
                         }}>
-                            Add Categories
+                            Update Category
                         </Button>
                     </Modal.Footer>
                 </Modal>

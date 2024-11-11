@@ -10,13 +10,20 @@
 }
 
 .react-tagsinput-tag {
-    margin-bottom: 0px;
+    margin: 5px;
+    padding: 0px 3px;
     background: linear-gradient(133deg, #41d2ff 0%, #7e42ff 47.4%, #dd3fff 96.19%);
     color: white;
 }
 
-.list_image{
-    width: 90px;
-    height: auto;
+.list_image {
     padding: 8px 0px;
+    height: 66px !important;
+    width: 90px;
+    object-fit: cover;
+}
+
+.comment_modal .modal-header {
+    padding: 8px 8px 0px 6px !important;
+    border-bottom: none !important;
 }

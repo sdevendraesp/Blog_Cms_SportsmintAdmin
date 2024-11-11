@@ -26,7 +26,7 @@ export default function BlogForm() {
     const formik = useFormik({
         initialValues: {
             categories: "",
-            meta_description:'',
+            meta_description: '',
             heading: "",
             subheading: "",
             pressImg: null,
@@ -36,8 +36,8 @@ export default function BlogForm() {
         validationSchema: Yup.object({
             categories: Yup.string().required("Please select a category"),
             meta_description: Yup.string().required("Meta Description is required"),
-            heading: Yup.string().required("Heading is required"),
-            subheading: Yup.string().required("Subheading is required"),
+            heading: Yup.string().required("Title is required"),
+            subheading: Yup.string().required("Short Description is required"),
             pressImg: Yup.mixed().required("Image is required"),
             description: Yup.string().required("Description is required"),
             labels: Yup.array().required("At least one label is required"),
@@ -84,9 +84,9 @@ export default function BlogForm() {
 
     const handleTagChange = (newTags) => {
         console.log('newTags', newTags);
-        
+
         if (newTags.length > 5) {
-            alert('You can add only 5 hashtags.');
+            toast.error('You can add only 5 hashtags.');
             return;
         }
         setTags(newTags);
@@ -119,6 +119,7 @@ export default function BlogForm() {
 
     return (
         <>
+            <Toaster />
             <div className="wrapper">
                 <Header />
                 <Sidebar />
@@ -148,13 +149,13 @@ export default function BlogForm() {
                                                 })}
                                             </Form.Select>
                                             {formik.touched.categories && formik.errors.categories ? (
-                                                <div className="text-danger">{formik.errors.categories}</div>
+                                                <div className="text-danger mt-1">{formik.errors.categories}</div>
                                             ) : null}
                                         </Col>
                                     </Row>
 
                                     <Row className="mt-4">
-                                        
+
 
                                         <Col lg={6} className="my-2">
                                             <Form.Label>Meta Description</Form.Label>
@@ -166,7 +167,7 @@ export default function BlogForm() {
                                                 onBlur={formik.handleBlur}
                                             />
                                             {formik.touched.meta_description && formik.errors.meta_description ? (
-                                                <div className="text-danger">{formik.errors.meta_description}</div>
+                                                <div className="text-danger mt-1">{formik.errors.meta_description}</div>
                                             ) : null}
                                         </Col>
 
@@ -180,7 +181,7 @@ export default function BlogForm() {
                                                 onBlur={formik.handleBlur}
                                             />
                                             {formik.touched.heading && formik.errors.heading ? (
-                                                <div className="text-danger">{formik.errors.heading}</div>
+                                                <div className="text-danger mt-1">{formik.errors.heading}</div>
                                             ) : null}
                                         </Col>
 
@@ -194,7 +195,7 @@ export default function BlogForm() {
                                                 onBlur={formik.handleBlur}
                                             />
                                             {formik.touched.subheading && formik.errors.subheading ? (
-                                                <div className="text-danger">{formik.errors.subheading}</div>
+                                                <div className="text-danger mt-1">{formik.errors.subheading}</div>
                                             ) : null}
                                         </Col>
 
@@ -209,7 +210,7 @@ export default function BlogForm() {
                                                 onBlur={formik.handleBlur}
                                             />
                                             {formik.touched.pressImg && formik.errors.pressImg ? (
-                                                <div className="text-danger">{formik.errors.pressImg}</div>
+                                                <div className="text-danger mt-1">{formik.errors.pressImg}</div>
                                             ) : null}
                                         </Col>
 
@@ -217,7 +218,7 @@ export default function BlogForm() {
                                             <Form.Label>Labels</Form.Label>
                                             <TagsInput value={tags} onChange={handleTagChange} />
                                             {formik.touched.labels && formik.errors.labels ? (
-                                                <div className="text-danger">{formik.errors.labels}</div>
+                                                <div className="text-danger mt-1">{formik.errors.labels}</div>
                                             ) : null}
                                         </Col>
 
@@ -228,7 +229,7 @@ export default function BlogForm() {
                                                 onChange={(content) => formik.setFieldValue("description", content)}
                                             />
                                             {formik.touched.description && formik.errors.description ? (
-                                                <div className="text-danger">{formik.errors.description}</div>
+                                                <div className="text-danger mt-1">{formik.errors.description}</div>
                                             ) : null}
                                         </Col>
 

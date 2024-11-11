@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import config from './config';
-const loginData = (!Cookies.get('loginSuccessMrMintAdmin', { domain: 'mrmint.io' })) ? [] : JSON.parse(Cookies.get('loginSuccessMrMintAdmin', { domain: 'mrmint.io' }));
+const loginData = (!Cookies.get('loginSuccessMrMintAdminCms', { domain: 'mrmint.io' })) ? [] : JSON.parse(Cookies.get('loginSuccessMrMintAdminCms', { domain: 'mrmint.io' }));
 
 
 const marketplaceServerPath = config.marketplaceServerPath;

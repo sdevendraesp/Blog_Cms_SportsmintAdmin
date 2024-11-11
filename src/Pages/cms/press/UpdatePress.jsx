@@ -11,13 +11,15 @@ import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
 import Header from "../../../directives/header";
 import Sidebar from "../../../directives/sidebar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import config from "../../../CoreFiles/config";
 
 export default function UpdatePress() {
 
     const navigate = useNavigate()
-    
+    const { Dev } = useParams();
+    console.log("Dev", Dev)
+
     const location = useLocation();
     const data = location.state;
     const [previousData, setPreviousData] = useState({
@@ -59,7 +61,7 @@ export default function UpdatePress() {
             hashtag: Yup.array().required("At least one hashtag is required"),
             pressImg: Yup.mixed().required("Image is required"),
             url: Yup.string().required("URL is required"),
-            short_description : Yup.string().required("Short Description is required"),
+            short_description: Yup.string().required("Short Description is required"),
         }),
         onSubmit: async (values, { resetForm }) => {
             console.log("formData-", values);
@@ -100,9 +102,9 @@ export default function UpdatePress() {
 
     const handleTagChange = (newTags) => {
         console.log('newTags', newTags);
-        
+
         if (newTags.length > 5) {
-            alert('You can add only 5 hashtags.');
+            toast.error('You can add only 5 hashtags.');
             return;
         }
         setTags(newTags);
@@ -134,6 +136,7 @@ export default function UpdatePress() {
 
     return (
         <>
+            <Toaster />
             <div className="wrapper">
                 <Header />
                 <Sidebar />
@@ -178,7 +181,7 @@ export default function UpdatePress() {
                                                 <div className="text-danger">{formik.errors.title}</div>
                                             ) : null}
                                         </Col>
-                                        
+
                                         <Col lg={6} className="my-2">
                                             <Form.Label>Short Description</Form.Label>
                                             <Form.Control
@@ -195,6 +198,14 @@ export default function UpdatePress() {
                                         </Col>
 
                                         <Col lg={6} className="my-2">
+                                            <Form.Label>Hashtag</Form.Label>
+                                            <TagsInput value={tags ? tags : []} onChange={handleTagChange} />
+                                            {formik.touched.hashtag && formik.errors.hashtag ? (
+                                                <div className="text-danger">{formik.errors.hashtag}</div>
+                                            ) : null}
+                                        </Col>
+
+                                        <Col lg={6} className="my-2">
                                             <Form.Label>Image</Form.Label>
                                             <Form.Control
                                                 type="file"
@@ -207,14 +218,12 @@ export default function UpdatePress() {
                                             {formik.touched.pressImg && formik.errors.pressImg ? (
                                                 <div className="text-danger">{formik.errors.pressImg}</div>
                                             ) : null}
-                                        </Col>
 
-                                        <Col lg={6} className="my-2">
-                                            <Form.Label>Hashtag</Form.Label>
-                                            <TagsInput value={tags ? tags : []} onChange={handleTagChange} />
-                                            {formik.touched.hashtag && formik.errors.hashtag ? (
-                                                <div className="text-danger">{formik.errors.hashtag}</div>
-                                            ) : null}
+                                            <div className="mt-3">
+                                                <img src={previousData.image ? (config.imageUrl + previousData.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} alt=""
+                                                    style={{ width: 'auto', height: '200px' }}
+                                                />
+                                            </div>
                                         </Col>
 
                                         <Col lg={12} className="mt-4 text-center">

@@ -54,6 +54,7 @@ const LoginNew = () => {
           }, 800);
         } else {
           toast.error("Wrong Username");
+          navigate(`${config.baseUrl}`);
         }
 
 

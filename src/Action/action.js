@@ -16,7 +16,7 @@ import {
 } from "../CoreFiles/marketplacehelper";
 
 export const LoginAction = (data) => {
-  return postRequest("administrator/adminlogin", data).then((res) => {
+  return postRequest("administrator/adminloginCms", data).then((res) => {
     return res.data;
   });
 };

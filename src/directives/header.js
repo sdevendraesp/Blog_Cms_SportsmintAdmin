@@ -67,7 +67,7 @@ const Header = () => {
   });
 
   const logout = async () => {
-    Cookies.remove("loginSuccessMrMintAdmin");
+    Cookies.remove("loginSuccessMrMintAdminCms");
     window.location.href = config.baseUrl;
     localStorage.clear();
     window.location.reload()

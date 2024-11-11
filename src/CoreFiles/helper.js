@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import config from './config';
-const loginData = (!Cookies.get('loginSuccessMrMintAdmin')) ? [] : JSON.parse(Cookies.get('loginSuccessMrMintAdmin'));
+const loginData = (!Cookies.get('loginSuccessMrMintAdminCms')) ? [] : JSON.parse(Cookies.get('loginSuccessMrMintAdminCms'));
 
 const serverPath = config.apiUrl;
 
