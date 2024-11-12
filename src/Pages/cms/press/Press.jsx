@@ -70,7 +70,8 @@ export default function Press() {
                     <img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" />
                 }
             </>,
-            center: true
+            center: true,
+            grow: 0.1
         },
         {
             name: 'Created Date',
@@ -86,7 +87,8 @@ export default function Press() {
         {
             name: 'Hashtag',
             selector: row => row.hashtag,
-            center: true
+            center: true,
+            // grow: 0.5
         },
         {
             name: 'Action',
@@ -98,7 +100,8 @@ export default function Press() {
                     Delete
                 </Button>
             </>,
-            center: true
+            center: true,
+            grow: 1
         },
 
     ];
@@ -175,7 +178,8 @@ export default function Press() {
                             </div>
                             <DataTable columns={columns} data={PressReleaseData} customStyles={customStyles}
                                 onChangePage={handlePageChange}
-                                onChangeRowsPerPage={onChangeRowsPerPage} />
+                                onChangeRowsPerPage={onChangeRowsPerPage}
+                                pagination />
                         </div>
                     </div>
                 </div>
