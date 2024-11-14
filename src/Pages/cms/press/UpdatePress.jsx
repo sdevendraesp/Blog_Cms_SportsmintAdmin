@@ -198,7 +198,7 @@ export default function UpdatePress() {
                                         </Col>
 
                                         <Col lg={6} className="my-2">
-                                            <Form.Label>Hashtag</Form.Label>
+                                            <Form.Label>Tag</Form.Label>
                                             <TagsInput value={tags ? tags : []} onChange={handleTagChange} />
                                             {formik.touched.hashtag && formik.errors.hashtag ? (
                                                 <div className="text-danger">{formik.errors.hashtag}</div>

@@ -7,10 +7,11 @@ import 'react-tagsinput/react-tagsinput.css'
 import '../cms/press/Press.css'
 import { Button, Toast } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getCommentsByBlog, statusChangeOfComments } from "../../Action/action";
+import { deleteComments, getCommentsByBlog, statusChangeOfComments } from "../../Action/action";
 import Swal from "sweetalert2";
 import { IoMdArrowBack } from "react-icons/io";
 import Modal from 'react-bootstrap/Modal';
+import toast from "react-hot-toast";
 
 export default function Comments() {
 
@@ -22,7 +23,6 @@ export default function Comments() {
     const [commentList, setCommentList] = useState([])
 
     const [show, setShow] = useState(false);
-
 
     const handleApproveDisapprove = (data) => {
 
@@ -69,15 +69,13 @@ export default function Comments() {
         confirmDelete()
     }
 
-
     const handleShow = (data) => {
         setCommentModal(data); // Set the comment
         setShow(true); // Show the modal
     };
 
-    // Function to handle closing the modal
     const handleClose = () => {
-        setShow(false); // Hide the modal
+        setShow(false);
     };
 
     const columns = [
@@ -122,7 +120,15 @@ export default function Comments() {
         },
         {
             name: 'Action',
-            selector: row => <><Button variant={row.is_approve === 0 ? 'danger' : 'success'} onClick={() => { handleApproveDisapprove(row) }}>{row.is_approve === 0 ? "Approve" : "Disapprove"}</Button></>,
+            selector: row => <>
+                <Button variant={row.is_approve === 0 ? 'danger' : 'success'} onClick={() => { handleApproveDisapprove(row) }}>{row.is_approve === 0 ? "Approve" : "Disapprove"}</Button>
+
+                <Button variant="primary" className="ms-2" onClick={
+                    () => { handleDelete(row) }
+                }>
+                    Delete
+                </Button>
+            </>,
             center: true
         },
     ];
@@ -150,8 +156,48 @@ export default function Comments() {
         }
     }
 
+    const handleDelete = (row) => {
+
+        const confirmDelete = async (itemId) => {
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            });
+
+            if (result.isConfirmed) {
+                // Call your delete function here, passing the item ID
+
+                const res = await deleteComments({ id: row.id });
+                if (res.success) {
+                    toast.success("Category updated successfully!");
+                    Swal.fire("success", "Category Added.", "success");
+                    // resetForm();
+                    window.location.reload();
+                } else {
+                    Swal.fire("Failed!", res.msg, "error");
+                }
+
+                Swal.fire(
+                    'Deleted!',
+                    'The item has been deleted.',
+                    'success'
+                );
+            }
+        };
+
+        confirmDelete()
+
+    }
+
     return (
         <>
+            <Toast />
             <div className="wrapper">
                 <Header />
                 <Sidebar />

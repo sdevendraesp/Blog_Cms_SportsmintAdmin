@@ -623,3 +623,9 @@ export const updateBlogs = (data) => {
     return res.data;
   });
 };
+
+export const deleteComments = (data) => {
+  return postRequest("administrator/deleteComments", data).then((res) => {
+    return res.data;
+  });
+};

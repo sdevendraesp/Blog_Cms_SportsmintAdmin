@@ -115,7 +115,9 @@ export default function BlogForm() {
         }
     }
 
-    console.log("getBlogCategoryList", getBlogCategoryList);
+    const config = {
+        uploader: { insertImageAsBase64URI: true }, // Disable image uploads
+    };
 
     return (
         <>
@@ -226,6 +228,7 @@ export default function BlogForm() {
                                             <Form.Label>Description</Form.Label>
                                             <JoditEditor
                                                 value={formik.values.description}
+                                                config={config}
                                                 onChange={(content) => formik.setFieldValue("description", content)}
                                             />
                                             {formik.touched.description && formik.errors.description ? (

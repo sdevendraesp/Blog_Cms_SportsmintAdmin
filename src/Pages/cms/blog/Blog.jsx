@@ -119,7 +119,7 @@ export default function Blog() {
         },
         {
             name: 'Created Date',
-            selector: row => moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
+            selector: row => moment(row?.created_at).format('DD-MM-YYYY'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
             center: true,
             grow: 1
         },
@@ -176,8 +176,13 @@ export default function Blog() {
                     Delete
                 </Button>
                 <><Button className="me-2" onClick={() => { handleFeaturedUnfeatured(row) }}>{row.is_featured === 0 ? "Feature" : "Unfeature"}</Button></>
+
+                <a href={`https://sportsmint.espsofttechnologies.com/blog/detail/${row.id}`} target="_blank">
+                    <Button className="me-2">View Blog</Button>
+                </a>
             </div>,
-            center: true
+            center: true,
+            grow: 3
         },
 
     ];
@@ -240,11 +245,11 @@ export default function Blog() {
 
     const onChangeRowsPerPage = (page) => {
         setItemsPerPage(page);
-      };
+    };
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
-      };
+    };
 
     return (
         <>

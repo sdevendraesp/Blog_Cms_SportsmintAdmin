@@ -54,7 +54,7 @@ export default function Categories() {
 
     const onChangeRowsPerPage = (page) => {
         setItemsPerPage(page);
-      };
+    };
 
 
     const handleDelete = (row) => {
@@ -107,13 +107,13 @@ export default function Categories() {
             name: 'Categories',
             selector: row => row?.category_name,
             center: true,
-            grow: 1
+            // width: "200px",
         },
         {
             name: 'Created Date',
-            selector: row => moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
+            selector: row => moment(row?.created_at).format('DD-MM-YYYY'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
             center: true,
-            grow: 1
+            // width: "200px",
         },
         {
             name: 'Action',
@@ -134,13 +134,14 @@ export default function Categories() {
                 </Button>
             </>,
             grow: 1,
-            center: true
+            center: true,
+            // width: "200px",
         },
     ];
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
-      };
+    };
 
     const { values, errors, touched, handleBlur, setFieldValue, handleSubmit, handleChange } = useFormik({
         initialValues: initialValues,

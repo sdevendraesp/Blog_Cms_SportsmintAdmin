@@ -105,25 +105,14 @@ const Header = () => {
             <ul className="header-megamenu nav">
               <li className="btn-group nav-item">
                 <a
-                  className="waves-effect waves-light nav-link push-btn btn-primary-light"
+                  className="waves-effect waves-light nav-link push-btn btn-primary-light d-block d-md-none"
                   data-toggle="push-menu"
                   role="button"
                   onClick={toggleFunc}
                 >
-                  {/* <i data-feather="align-left" /> */}
                   < HiBars3 />
                 </a>
               </li>
-              {/* <li className="btn-group nav-item">
-                <a
-                  className="waves-effect waves-light nav-link push-btn btn-primary-light"
-                  data-toggle="push-menu"
-                  role="button"
-                  onClick={toggleFunctheme}
-                >
-                  <i data-feather="sun" />
-                </a>
-              </li> */}
             </ul>
           </div>
           <div className="navbar-custom-menu r-side">

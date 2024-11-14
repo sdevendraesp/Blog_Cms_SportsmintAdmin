@@ -46,18 +46,15 @@ export default function Press() {
         {
             name: 'Title',
             selector: row => row.title,
-            center: true
+            center: true,
+            width: "200px",
         },
         {
             name: 'Url',
             selector: row => row.url,
-            center: true
+            center: true,
+            width: "200px",
         },
-        // {
-        //     name: 'Image',
-        //     selector: row => <><img src={row.image ? (config.imageUrl + row.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} className="img-fluid list_image" /></>,
-        //     center: true
-        // },
         {
             name: 'Image',
             selector: row => <>
@@ -71,24 +68,25 @@ export default function Press() {
                 }
             </>,
             center: true,
-            grow: 0.1
+            width: "200px",
         },
         {
             name: 'Created Date',
-            selector: row => moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
+            selector: row => moment(row?.created_at).format('DD-MM-YYYY'), //{ moment(row?.created_at).format('DD-MM-YYYY hh:mm:ss A') },
             center: true,
-            grow: 1
+            width: "200px",
         },
         {
             name: 'Short Description',
             selector: row => row.short_description,
-            center: true
+            center: true,
+            width: "200px",
         },
         {
             name: 'Hashtag',
             selector: row => row.hashtag,
             center: true,
-            // grow: 0.5
+            width: "200px",
         },
         {
             name: 'Action',
@@ -100,8 +98,8 @@ export default function Press() {
                     Delete
                 </Button>
             </>,
+            width: "200px",
             center: true,
-            grow: 1
         },
 
     ];
