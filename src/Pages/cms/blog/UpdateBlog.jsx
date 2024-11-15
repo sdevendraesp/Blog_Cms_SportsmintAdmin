@@ -135,146 +135,153 @@ export default function UpdateBlog() {
     return (
 
         <>
-        <Toaster />
-        <div className="wrapper">
-            <Header />
-            <Sidebar />
-            <div className="content-wrapper">
-                <div className="container-full">
-                    <div className="p-3">
-                        <Row>
-                            <Col xs={6}>
-                                <h2 className="press">Add Blog</h2>
-                            </Col>
-                        </Row>
+            <Toaster />
+            <div className="wrapper">
+                <Header />
+                <Sidebar />
+                <div className="content-wrapper">
+                    <div className="container-full">
+                        <div className="p-3">
+                            <Row>
+                                <Col xs={6}>
+                                    <h2 className="press">Add Blog</h2>
+                                </Col>
+                            </Row>
 
-                        <div className="mt-4">
-                            <Form onSubmit={formik.handleSubmit}>
+                            <div className="mt-4">
+                                <Form onSubmit={formik.handleSubmit}>
 
-                                <Row className="mt-4">
+                                    <Row className="mt-4">
 
-                                    <Col md={6}>
-                                        <Form.Label>Categories</Form.Label>
-                                        <Form.Select
-                                            aria-label="Select Categories"
-                                            name="categories"
-                                            value={formik.values.categories}
-                                            onChange={(e) => formik.setFieldValue('categories', Number(e.target.value))}
-                                            onBlur={formik.handleBlur}
-                                        >
-                                            <option value="">Select Categories</option>
-                                            {getBlogCategoryList.map((value, index) => (
-                                                <option value={Number(value.id)} key={index}>{value.category_name}</option>
-                                            ))}
-                                        </Form.Select>
-                                        {formik.touched.categories && formik.errors.categories && (
-                                            <div className="text-danger">{formik.errors.categories}</div>
-                                        )}
-                                    </Col>
+                                        <Col md={6}>
+                                            <Form.Label>Categories</Form.Label>
+                                            <Form.Select
+                                                aria-label="Select Categories"
+                                                name="categories"
+                                                value={formik.values.categories}
+                                                onChange={(e) => formik.setFieldValue('categories', Number(e.target.value))}
+                                                onBlur={formik.handleBlur}
+                                            >
+                                                <option value="">Select Categories</option>
+                                                {getBlogCategoryList.map((value, index) => (
+                                                    <option value={Number(value.id)} key={index}>{value.category_name}</option>
+                                                ))}
+                                            </Form.Select>
+                                            {formik.touched.categories && formik.errors.categories && (
+                                                <div className="text-danger">{formik.errors.categories}</div>
+                                            )}
+                                        </Col>
 
 
-                                    <Col lg={6} className="my-2">
-                                        <Form.Label>Meta Description</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="meta_description"
-                                            value={formik.values.meta_description}
-                                            onChange={formik.handleChange}
-                                            onBlur={formik.handleBlur}
-                                        />
-                                        {formik.touched.meta_description && formik.errors.meta_description && (
-                                            <div className="text-danger">{formik.errors.meta_description}</div>
-                                        )}
-                                    </Col>
-
-                                    <Col lg={6} className="my-2">
-                                        <Form.Label>Title</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="heading"
-                                            value={formik.values.heading}
-                                            onChange={formik.handleChange}
-                                            onBlur={formik.handleBlur}
-                                        />
-                                        {formik.touched.heading && formik.errors.heading && (
-                                            <div className="text-danger">{formik.errors.heading}</div>
-                                        )}
-                                    </Col>
-
-                                    <Col lg={6} className="my-2">
-                                        <Form.Label>Short Description</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            name="subheading"
-                                            value={formik.values.subheading}
-                                            onChange={formik.handleChange}
-                                            onBlur={formik.handleBlur}
-                                        />
-                                        {formik.touched.subheading && formik.errors.subheading && (
-                                            <div className="text-danger">{formik.errors.subheading}</div>
-                                        )}
-                                    </Col>
-
-                                    <Col lg={6} className="my-2">
-                                        <Form.Label>Labels</Form.Label>
-                                        <TagsInput value={tags} onChange={handleTagChange} />
-                                        {formik.touched.labels && formik.errors.labels && (
-                                            <div className="text-danger">{formik.errors.labels}</div>
-                                        )}
-                                    </Col>
-
-                                    <Col lg={6} className="my-2">
-                                        <Form.Label>Image</Form.Label>
-                                        <Form.Control
-                                            type="file"
-                                            accept="image/*"
-                                            name="pressImg"
-                                            ref={fileInputRef}
-                                            onChange={handleFileChange}
-                                            onBlur={formik.handleBlur}
-                                        />
-                                        {formik.touched.pressImg && formik.errors.pressImg && (
-                                            <div className="text-danger">{formik.errors.pressImg}</div>
-                                        )}
-
-                                        <div className="mt-3">
-                                            <img src={previousData.image ? (config.imageUrl + previousData.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} alt=""
-                                                style={{ width: 'auto', height: '200px' }}
+                                        <Col lg={6} className="my-2">
+                                            <Form.Label>Meta Description</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="meta_description"
+                                                value={formik.values.meta_description}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
                                             />
-                                        </div>
-                                    </Col>
+                                            {formik.touched.meta_description && formik.errors.meta_description && (
+                                                <div className="text-danger">{formik.errors.meta_description}</div>
+                                            )}
+                                        </Col>
 
-                                    {/* <Col lg={6}>
+                                        <Col lg={6} className="my-2">
+                                            <Form.Label>Title</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="heading"
+                                                value={formik.values.heading}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                            />
+                                            {formik.touched.heading && formik.errors.heading && (
+                                                <div className="text-danger">{formik.errors.heading}</div>
+                                            )}
+                                        </Col>
+
+                                        <Col lg={6} className="my-2">
+                                            <Form.Label>Short Description</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="subheading"
+                                                value={formik.values.subheading}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                            />
+                                            {formik.touched.subheading && formik.errors.subheading && (
+                                                <div className="text-danger">{formik.errors.subheading}</div>
+                                            )}
+                                        </Col>
+
+                                        <Col lg={6} className="my-2">
+                                            <Form.Label>Labels</Form.Label>
+                                            <TagsInput value={tags} onChange={handleTagChange} />
+                                            {formik.touched.labels && formik.errors.labels && (
+                                                <div className="text-danger">{formik.errors.labels}</div>
+                                            )}
+                                        </Col>
+
+                                        <Col lg={6} className="my-2">
+                                            <Form.Label>Image</Form.Label>
+                                            <Form.Control
+                                                type="file"
+                                                accept="image/*"
+                                                name="pressImg"
+                                                ref={fileInputRef}
+                                                onChange={handleFileChange}
+                                                onBlur={formik.handleBlur}
+                                            />
+                                            {formik.touched.pressImg && formik.errors.pressImg && (
+                                                <div className="text-danger">{formik.errors.pressImg}</div>
+                                            )}
+
+                                            <div className="mt-3">
+                                                <img src={previousData.image ? (config.imageUrl + previousData.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} alt=""
+                                                    style={{ width: 'auto', height: '200px' }}
+                                                />
+                                            </div>
+                                        </Col>
+
+                                        {/* <Col lg={6}>
                                             <img src={previousData.image ? (config.imageUrl + previousData.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZqj-XReJ2R76nji51cZl4ETk6-eHRmZBRw&s'} alt="" 
                                             style={{width:'auto', height:'200px'}}
                                             />
                                         </Col> */}
 
-                                    {/* <Row>
+                                        {/* <Row>
                                         
                                     </Row> */}
 
-                                    <Col sm={12} className="mt-4">
-                                        <Form.Label>Description</Form.Label>
-                                        <JoditEditor
-                                            value={formik.values.description}
-                                            onChange={(content) => formik.setFieldValue("description", content)}
-                                        />
-                                        {formik.touched.description && formik.errors.description && (
-                                            <div className="text-danger">{formik.errors.description}</div>
-                                        )}
-                                    </Col>
+                                        <Col sm={12} className="mt-4">
+                                            <Form.Label>Description</Form.Label>
+                                            <JoditEditor
+                                                value={formik.values.description}
+                                                config={{
+                                                    readonly: false,
+                                                    // uploader: {
+                                                    //     insertImageAsBase64URI: true,
+                                                    // },
+                                                }}
+                                                //onChange={(e)=>{formik.values.description = e}}
+                                                onChange={(content) => formik.setFieldValue("description", content)}
+                                            />
+                                            {formik.touched.description && formik.errors.description && (
+                                                <div className="text-danger">{formik.errors.description}</div>
+                                            )}
+                                        </Col>
 
-                                    <Col lg={12} className="mt-4 text-center">
-                                        <Button type="submit">Submit</Button>
-                                    </Col>
-                                </Row>
-                            </Form>
+                                        <Col lg={12} className="mt-4 text-center">
+                                            <Button type="submit">Submit</Button>
+                                        </Col>
+                                    </Row>
+                                </Form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </>
     );
 }

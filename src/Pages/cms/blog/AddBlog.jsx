@@ -30,7 +30,7 @@ export default function BlogForm() {
             heading: "",
             subheading: "",
             pressImg: null,
-            description: "",
+            description: '',
             labels: []
         },
         validationSchema: Yup.object({
@@ -77,6 +77,10 @@ export default function BlogForm() {
         },
     });
 
+
+
+
+
     // const handleTagChange = (newTags) => {
     //     setTags(newTags);
     //     formik.setFieldValue("labels", newTags);
@@ -115,9 +119,8 @@ export default function BlogForm() {
         }
     }
 
-    // const editorConfig = {
-    //     uploader: { insertImageAsBase64URI: true }, // Disable image uploads
-    // };
+    console.log('error', formik.values.description);
+
 
     return (
         <>
@@ -228,10 +231,19 @@ export default function BlogForm() {
                                             <Form.Label>Description</Form.Label>
                                             <JoditEditor
                                                 value={formik.values.description}
-                                                // config={editorConfig}
-                                                onChange={(content) => {
-                                                    formik.setFieldValue("description", content)
-                                                }}
+                                                id='description'
+                                                name='description'
+                                                // config={{
+                                                //     readonly: false,
+                                                //     uploader: {
+                                                //         url: '/upload-image-endpoint', // Set this to your image upload endpoint
+                                                //         format: "jpg,png,webp", // Allowed image formats
+                                                //         insertImageAsBase64URI: true,// Set to true to bypass server and embed images as base64
+                                                //     },
+                                                // }}
+                                                //onChange={(e) => { formik.values.description = e }}
+                                                onChange={(content) => { formik.setFieldValue("description", content) }}
+                                                onBlur={formik.handleBlur}
                                             />
                                             {formik.touched.description && formik.errors.description ? (
                                                 <div className="text-danger mt-1">{formik.errors.description}</div>

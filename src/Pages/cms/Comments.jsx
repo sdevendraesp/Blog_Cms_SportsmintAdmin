@@ -116,7 +116,8 @@ export default function Comments() {
         {
             name: 'Email',
             selector: row => row.email,
-            center: true
+            center: true,
+            grow: 2
         },
         {
             name: 'Action',
@@ -129,7 +130,8 @@ export default function Comments() {
                     Delete
                 </Button>
             </>,
-            center: true
+            center: true,
+            grow: 2
         },
     ];
 
