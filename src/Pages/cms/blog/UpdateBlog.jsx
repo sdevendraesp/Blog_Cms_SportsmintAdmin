@@ -258,12 +258,12 @@ export default function UpdateBlog() {
                                             <Form.Label>Description</Form.Label>
                                             <JoditEditor
                                                 value={formik.values.description}
-                                                config={{
-                                                    readonly: false,
-                                                    // uploader: {
-                                                    //     insertImageAsBase64URI: true,
-                                                    // },
-                                                }}
+                                                // config={{
+                                                //     readonly: false,
+                                                //     uploader: {
+                                                //         insertImageAsBase64URI: true,
+                                                //     },
+                                                // }}
                                                 //onChange={(e)=>{formik.values.description = e}}
                                                 onChange={(content) => formik.setFieldValue("description", content)}
                                             />
