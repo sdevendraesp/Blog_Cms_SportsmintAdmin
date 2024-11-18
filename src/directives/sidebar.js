@@ -43,6 +43,11 @@ const Sidebar = (props) => {
         setActiveTab("categories");
         break;
 
+      case "image-upload":
+        setToggles({ cms: true });
+        setActiveTab("images-list");
+        break;
+
 
       // Add more cases as necessary
       default:
@@ -217,6 +222,34 @@ const Sidebar = (props) => {
                             </span>
                             &emsp;
                             <span>Categories</span>
+                          </Link>
+                        </li>
+                      </>
+                    ) : (
+                      ""
+                    )}
+
+                    {loginData.role == 6 ? (
+                      <>
+                        {console.log("activeTab", activeTab)}
+                        <li
+                          className={
+                            activeTab === "images-list" ? "active" : ""
+                          }
+                        >
+                          <Link to={`${config.baseUrl}image-upload`} onClick={() => { sidebarCollapse() }}>
+                            {/* <img
+                              src="./images/icons/terms-and-conditions.png"
+                              alt="logo"
+                              height={24}
+                              width={24}
+                              loading="lazy"
+                            /> */}
+                            <span style={{ color: 'white', fontSize: '24px' }}>
+                              <MdOutlineNewspaper />
+                            </span>
+                            &emsp;
+                            <span>Images Url</span>
                           </Link>
                         </li>
                       </>
