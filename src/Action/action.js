@@ -629,3 +629,23 @@ export const deleteComments = (data) => {
     return res.data;
   });
 };
+
+export const imageUpload = (data) => {
+  return postRequestFormData("administrator/imageUpload", data).then((res) => {
+    return res.data;
+  });
+};
+
+
+export const getBlogAllImages = (token, data) => {
+  return getRequest(`administrator/getBlogAllImages`, {
+  }).then((res) => {
+    return res.data;
+  });
+};
+
+export const deleteBlogImages = (data) => {
+  return postRequest("administrator/deleteBlogImages", data).then((res) => {
+    return res.data;
+  });
+};

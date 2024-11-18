@@ -16,6 +16,7 @@ import UpdateBlog from "./Pages/cms/blog/UpdateBlog";
 import Comments from "./Pages/cms/Comments";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import ImageUpload from "./Pages/cms/ImageUpload";
 
 function App() {
   const loadingStyles = {
@@ -144,6 +145,18 @@ function App() {
                 >
                   {" "}
                   <UpdateBlog />{" "}
+                </Suspense>
+              }
+            />
+            
+            <Route
+              path={`${config.baseUrl}image-upload`}
+              element={
+                <Suspense
+                  fallback={<div style={loadingStyles}>Loading...</div>}
+                >
+                  {" "}
+                  <ImageUpload />{" "}
                 </Suspense>
               }
             />

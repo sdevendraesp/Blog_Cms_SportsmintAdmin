@@ -233,16 +233,16 @@ export default function BlogForm() {
                                                 value={formik.values.description}
                                                 id='description'
                                                 name='description'
-                                                // config={{
-                                                //     readonly: false,
-                                                //     uploader: {
-                                                //         url: '/upload-image-endpoint', // Set this to your image upload endpoint
-                                                //         format: "jpg,png,webp", // Allowed image formats
-                                                //         insertImageAsBase64URI: true,// Set to true to bypass server and embed images as base64
-                                                //     },
-                                                // }}
-                                                //onChange={(e) => { formik.values.description = e }}
-                                                onChange={(content) => { formik.setFieldValue("description", content) }}
+                                                config={{
+                                                    readonly: false,
+                                                    uploader: {
+                                                        url: '/upload-image-endpoint', // Set this to your image upload endpoint
+                                                        format: "jpg,png,webp", // Allowed image formats
+                                                        insertImageAsBase64URI: true,// Set to true to bypass server and embed images as base64
+                                                    },
+                                                }}
+                                                onChange={(e) => { formik.values.description = e }}
+                                                // onChange={(content) => { formik.setFieldValue("description", content) }}
                                                 onBlur={formik.handleBlur}
                                             />
                                             {formik.touched.description && formik.errors.description ? (
